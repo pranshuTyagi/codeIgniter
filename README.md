@@ -1,0 +1,3 @@
+# codeIgniter
+
+Routes for application  
