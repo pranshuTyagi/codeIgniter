@@ -1,18 +1,14 @@
 <?php
 
-
-defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Coupon_controller extends CI_Controller {
-
     public function __construct(){
         parent:__construct();
     }
-
     public function get_coupons(){
         $this->load->model('Coupon_Model');
-        $data['coup'] = $this->Coupon_Model->getCoupons();
-        return json_encode($data);
+        $this->load->view('coupon')
+        $data['coup'] = $this->Coupon_Model->getCoupon();
+       // return json_encode($data);
     }
    public function apply_coupon(){
     // From the url route params,we get the id of the coupon from coupons/:coupon
@@ -23,15 +19,12 @@ class Coupon_controller extends CI_Controller {
         $this->load->model('Coupon_Model');
         //get the specific coupon from the coupons table.
         $coupon = $this->Coupon_Model->getCoupon($id);
-
         $data['couponid'] = $coupon->couponid;
         $data['couponcode'] = $coupon->couponcode;
         $data['coupontype'] = $coupon->coupontype;
         $data['couponvalidity'] = $coupon->couponvalidity;
-
         $this->load->library('form_validation');
         $this->form_validation->set_rules('couponcode', 'trim|required|min_length[5]|max_length[20]');
-
         
         if ($this->form_validation->run() == TRUE) {
             if($data['couponcode'] == $this->input->post('couponcode')){
