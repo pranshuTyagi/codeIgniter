@@ -71,3 +71,5 @@ $route['redirect'] = 'Redirect_controller';
 $route['redirect/computer_graphics'] = 'Redirect_controller/computer_graphics';
 $route['profiler'] = 'Profiler_controller';
 $route['profiler/disable'] = 'Profiler_controller/disable';
+$route['coupons'] = 'Coupon_controller/get_coupons';
+$route['coupons/:coupon'] = 'Coupon_controller/apply_coupon';
