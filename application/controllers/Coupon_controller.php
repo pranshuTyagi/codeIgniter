@@ -7,7 +7,7 @@ class Coupon_controller extends CI_Controller {
     public function get_coupons(){
         $this->load->model('Coupon_Model');
         $this->load->view('coupon')
-        $data['coup'] = $this->Coupon_Model->getCoupon();
+        $data['coup'] = $this->Coupon_Model->getCoupons();
        // return json_encode($data);
     }
    public function apply_coupon(){
